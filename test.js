@@ -9,7 +9,7 @@ test("pipeline equivalence test", function (t) {
 			output1 = [], output2 = [], done = false;
 
 	/**
-	 * Repiped pipeline
+	 * Pipeline
 	 **/
 
 	var crypto1 = require('crypto').createCipher('aes-256-cbc', 'password');
@@ -25,7 +25,7 @@ test("pipeline equivalence test", function (t) {
 	})
 
 	/**
-	 * Control pipeline
+	 * Control
 	 **/
 
 	var crypto2 = require('crypto').createCipher('aes-256-cbc', 'password');
