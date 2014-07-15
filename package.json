@@ -1,0 +1,18 @@
+{
+  "name": "pipeline",
+  "version": "0.0.1",
+  "description": "For laying pipelines",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test.js"
+  },
+  "author": "Luke Burns <lukemburns@gmail.com> (http://lukeburns.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "through2": "^0.5.1",
+    "repipe": "^0.0.1"
+  },
+  "devDependencies": {
+    "tap": "^0.4.11"
+  }
+}
