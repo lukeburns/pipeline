@@ -3,8 +3,8 @@
 For laying pipelines. Built on [repipe](https://github.com/lukeburns/repipe).
 
 ```
-var line = pipeline(cipher, decipher);
-fs.createReadStream('README.md').pipe(line).pipe(process.stdout);
+var line = pipeline(cipher, decipher, process.stdout);
+fs.createReadStream('README.md').pipe(line);
 ```
 becomes
 ```
