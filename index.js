@@ -9,7 +9,7 @@ function pipeline() {
 	var streams = Array.prototype.concat.apply([], arguments).filter(function (stream) {
     return Boolean(stream) && Boolean(stream.pipe);
   }).map(function(stream) {
-  	return !(stream instanceof Stream.Readable) ? pass(stream) : stream;
+  	return !(stream instanceof Stream.Readable || stream.readable) ? pass(stream) : stream;
   });
 
   if(streams.length == 0) return through();
