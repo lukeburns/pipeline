@@ -1,27 +1,28 @@
 var test = require("tap").test,
 		through = require('through2'),
-		pipeline = require('./');
+		pipeline = require('./'),
+		fs = require('fs'),
+		handle = require('handle');
 
 test("pipeline equivalence test", function (t) {
 	t.plan(1);
 
 	var hello = str('Hello lovely world'),
-			output1 = [], output2 = [], done = false;
+			output1 = [], output2 = [];
 
 	/**
 	 * Pipeline
 	 **/
 
 	var crypto1 = require('crypto').createCipher('aes-256-cbc', 'password');
+	crypto1.name = 'crypto1';
 	var gzip1 = require('zlib').createGzip();
+	gzip1.name = 'gzip1';
 
 	var line = pipeline(crypto1, gzip1);
 	hello.pipe(line)
 	.on('data', function (chunk) {
 		output1.push(chunk.toString());
-	})
-	.on('end', function() {
-		done = true;
 	})
 
 	/**
@@ -35,11 +36,20 @@ test("pipeline equivalence test", function (t) {
 	.on('data', function (chunk) {
 		output2.push(chunk.toString());
 	}).on('end', function() {
-		if(done) {
 			t.deepEqual(output1, output2);
-		}
 	})
-})
+});
+
+test("pass through non-readable streams in the pipeline", function (t) {
+	t.plan(1);
+
+	var line = pipeline(null, [through()], fs.createWriteStream('test.md'));
+	fs.createReadStream('README.md').pipe(line).pipe(handle(function (data) {
+		var contents = fs.readFileSync('test.md', 'utf8');
+		t.equal(contents, data);
+		fs.unlinkSync('test.md');
+	}));
+});
 
 function str(data) {
 	var input = through();
