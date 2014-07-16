@@ -1,7 +1,7 @@
 var test = require("tap").test,
+		fs = require('fs'),
 		through = require('through2'),
-		pipeline = require('./'),
-		fs = require('fs');
+		pipeline = require('./');
 
 test("pipeline equivalence test", function (t) {
 	t.plan(1);

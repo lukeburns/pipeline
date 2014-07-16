@@ -1,7 +1,7 @@
 var Stream = require('stream'),
 		through = require('through2'),
-		repipe = require('repipe'),
-		pass = require('pass');
+		repipe = require('through2-repipe'),
+		pass = require('through2-pass');
 
 module.exports = pipeline;
 

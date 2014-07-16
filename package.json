@@ -1,17 +1,36 @@
 {
-  "name": "pipeline",
+  "name": "through2-pipeline",
   "version": "0.0.1",
   "description": "For laying pipelines",
   "main": "index.js",
   "scripts": {
     "test": "tap test.js"
   },
-  "author": "Luke Burns <lukemburns@gmail.com> (http://lukeburns.com/)",
-  "license": "ISC",
   "dependencies": {
-    "through2": "^0.5.1"
+    "through2": "^0.5.1",
+    "through2-pass": "0.0.1",
+    "through2-repipe": "0.0.2"
   },
   "devDependencies": {
     "tap": "^0.4.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukeburns/pipeline"
+  },
+  "keywords": [
+    "streams",
+    "through2",
+    "pipe",
+    "repipe",
+    "pipeline"
+  ],
+  "author": {
+    "name": "Luke Burns",
+    "email": "lukemburns@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukeburns/pipeline/issues"
   }
 }
