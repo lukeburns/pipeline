@@ -2,6 +2,7 @@
 
 For laying pipelines. Built on [repipe](https://github.com/lukeburns/repipe).
 
+### Usage
 ```
 var line = pipeline(cipher, decipher, process.stdout);
 fs.createReadStream('README.md').pipe(line);
