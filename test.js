@@ -39,17 +39,6 @@ test("pipeline equivalence test", function (t) {
 	})
 });
 
-test("pass through non-readable streams in the pipeline", function (t) {
-	t.plan(1);
-
-	var line = pipeline(null, [through()], fs.createWriteStream('test.md'));
-	fs.createReadStream('README.md').pipe(line).pipe(handle(function (data) {
-		var contents = fs.readFileSync('test.md', 'utf8');
-		t.equal(contents, data);
-		fs.unlinkSync('test.md');
-	}));
-});
-
 function str(data) {
 	var input = through();
 	input.write(data);
@@ -57,15 +46,27 @@ function str(data) {
 	return input;
 }
 
-function handle(callback) {
-	var all = [];
-	var stream = through();
-	stream
-	.on('data', function(data) { 
-		all.push(data); 
-	})
-	.on('end', function() { 
-		callback(all.join('').toString());
-	});
-	return stream;
-}
+// REMOVED: use through2-pass
+// test("pass through non-readable streams in the pipeline", function (t) {
+// 	t.plan(1);
+
+// 	var line = pipeline(null, [through()], fs.createWriteStream('test.md'));
+// 	fs.createReadStream('README.md').pipe(line).pipe(handle(function (data) {
+// 		var contents = fs.readFileSync('test.md', 'utf8');
+// 		t.equal(contents, data);
+// 		fs.unlinkSync('test.md');
+// 	}));
+// });
+
+// function handle(callback) {
+// 	var all = [];
+// 	var stream = through();
+// 	stream
+// 	.on('data', function(data) { 
+// 		all.push(data); 
+// 	})
+// 	.on('end', function() { 
+// 		callback(all.join('').toString());
+// 	});
+// 	return stream;
+// }
