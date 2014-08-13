@@ -1,4 +1,4 @@
-## ABANDONED: use [oneway](https://github.com/lukeburns/oneway).
+## ABANDONED: use [oneway](https://github.com/lukeburns/oneway) (you get error handling and more)
 
 ## pipe(line)
 
