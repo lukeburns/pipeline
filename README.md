@@ -1,3 +1,5 @@
+## ABANDONED: use [oneway](https://github.com/lukeburns/oneway).
+
 ## pipe(line)
 
 For laying pipelines. Built on [repipe](https://github.com/lukeburns/repipe).
